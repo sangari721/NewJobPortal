@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>job portal</title>
+    <link rel="icon" type="image/png" href="..\images\joblogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  -->
+    <link rel="stylesheet" href="..\CSS\style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+  
+</head>
+<body>
+    <header class="headtag">
+        <div class="heddiv">       
+            <i class="fa-solid fa-briefcase jobicon"></i>
+            <h1>Job Findr</h1>    
+            <div class="header-bar">
+            <button class="signup button" id="btnsignup" onclick="btnSignUp()">SignUp</button>
+            <button class="Pjob button" id="btnPost">Post Job</button>
+            </div>
+        </div>    
+    </header>
+    
+    <div class="main-container">
+    <h1>Find Your Perfect Job, Effortlessly.</h1>
+    <p>Discover 500,000+ opportunities from leading companies globally. Start your career journey today.</p>
+
+    <div class="frstgrid">
+
+        <div class="left-box">
+
+            <div class="search-box">
+                <input type="text" placeholder="JobTitle or CompanyName..." id="searchTitle">
+                <button id="searchBtn"><i class="fa fa-search"></i></button>
+                <button id="closebtn" style="display: none;"><i class="fa fa-close"></i></button>
+            </div>
+
+            <div class="search-box">
+                <input type="text" placeholder="JobTitle or CompanyName..." id="searchTitle1">
+                <button id="searchBt1"><i class="fa-solid fa-location-dot"></i></button>
+                <button id="closebtn1" style="display: none;"><i class="fa fa-close"></i></button>
+            </div>
+
+            <button class="findbutton">Find Jobs</button>
+        </div>
+
+        <div class="img-box">
+            <img src="../images/frontimg.png" class="card-img">
+        </div>
+
+    </div>
+</div>
+
+<div class="signup-container" id="signpopup" style="display: none;">
+    <div class="signup-card">
+        <!-- <span class="close-popup" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></span> -->
+        <h2>Create Account</h2>
+        <p class="subtitle">Join our job portal and start applying!</p>
+        <form>
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="fullname" placeholder="Enter your full name" required>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="pwd" placeholder="Enter a password" required>
+            </div>
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" id="ConfirmPwd" placeholder="Re-enter password" required>
+            </div>
+            <div class="button-row">
+            <button class="signup-btn" onclick="signupbtn()">Sign Up</button>
+            <button class="cancel-btn" id="cancelBtn">Cancel</button>
+            </div>
+            <p class="login-link">
+                Already have an account?
+                <a href="#">Login</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-column">
+            <h3>JobPortal</h3>
+            <p>Your career starts here. Explore thousands of job openings worldwide.</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Find Jobs</a></li>
+                <li><a href="#">Browse Companies</a></li>
+                <li><a href="#">Post a Job</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 JobPortal. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+</body>
+</html>
+<script>
+    
+function btnSignUp(){
+    document.getElementById("signpopup").style.display = "flex";
+    document.body.style.overflow = "hidden";
+}
+
+document.getElementById("cancelBtn").addEventListener("click", function (e) {
+    e.preventDefault(); // stop form submit
+    document.getElementById("signpopup").style.display = "none";
+    document.body.style.overflow = "auto";
+    clearInputs()
+});
+
+function clearInputs() {
+    document.querySelectorAll("#signpopup input").forEach(input => {
+        input.value = "";
+    });
+}
+
+ function signupbtn(){
+    debugger
+    var fullname = document.getElementById("fullname").value;
+    var email = document.getElementById("email").value;
+    var pwd = document.getElementById("pwd").value;
+    var confrimpwd = document.getElementById("ConfirmPwd").value;
+
+    if(pwd != confrimpwd){
+        alert("Passwords do not match! Please Enter Same Password.")
+    }
+
+    var data = {
+        fullname : fullname,
+        email: email ,
+        password: pwd ,
+        confrmPasswrd: confrimpwd
+    };
+ }
+</script>
